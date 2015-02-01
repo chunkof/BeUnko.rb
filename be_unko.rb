@@ -30,8 +30,7 @@ module BeUnko
   #
   def string(org)
     # continues counter
-    continues = {hira:0, kata:0}
-    
+    continues = {hira:0, kata:0, alpha:0}
     # Convert
     result = ""
     org.split(//).each{|ch|
@@ -39,18 +38,23 @@ module BeUnko
       if    /\p{Hiragana}/ =~ ch then
         replace = ['う','ん','こ']
         ch = replace[continues[:hira]]
-        
-        continues = clear_continues(continues, 'hira')
+
         continues = increment_continues(continues, 'hira', 3)
+        continues = clear_continues(continues, 'hira')
       # カタカナ
       elsif /\p{Katakana}/ =~ ch then
         replace = ['ウ','ン','コ']
         ch = replace[continues[:kata]]
         
-        continues = clear_continues(continues, 'kata')
         continues = increment_continues(continues, 'kata', 3)
+        continues = clear_continues(continues, 'kata')
+      # 漢字
+      elsif /[一-龠々]/ =~ ch then
+        ch = '糞'
+        continues = clear_continues(continues, nil)
+      else
+        continues = clear_continues(continues, nil)
       end
-      
       result = result + ch.to_s
     }
     
