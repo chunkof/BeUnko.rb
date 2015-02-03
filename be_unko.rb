@@ -28,7 +28,7 @@ module BeUnko
   #
   def string(org)
     serial = 0;
-    last_type = '-';
+    last_type = '-'
     result = ""
     # convert
     org.split(//).each{|ch|
