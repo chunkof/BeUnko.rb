@@ -1,6 +1,6 @@
 # BeUnko.rb
 
-Be Unko!
+文字列をうんこにします。
 
 ## Usage
 code
