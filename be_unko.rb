@@ -51,7 +51,11 @@ module BeUnko
         if /[ァィゥェォヵヶッャュョヮ]/ =~ ch then
           replace = ['ゥ','ッ','ォ']
           serial = ('kata'==last_type) ? serial : 0;
-        # ナミ字(半角）
+        # 小書き文字(半角)
+        elsif /[ｧｨｩｪｫヵヶｯｬｭｮヮ]/ =~ ch then
+          replace = ['ｩ','ｯ','ｫ']
+          serial = ('kata'==last_type) ? serial : 0;
+        # ナミ字(半角)
         elsif /[ｱ-ﾝ]/ =~ ch then
           replace = ['ｳ','ﾝ','ｺ']
           serial = ('kata'==last_type) ? max_cyclic(serial+1,replace.length-1) : 0;
