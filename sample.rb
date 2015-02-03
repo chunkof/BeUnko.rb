@@ -2,26 +2,14 @@
 
 require "./be_unko.rb"
 
-org ="これが元の文章です。これはサンプルです。（記号や数値は変換されません）"
+org  = "この文章は、サンプル(Sample)です。"
+unko = BeUnko::string(org)
 puts org
-puts "↓"
-puts BeUnko::string(org)
+puts unko
 puts ""
 
-org ="ﾊﾝｶｸｶﾅ、Alphabetにも対応しています。"
+org  = "コーギー犬(ﾜｵﾝｯ！ﾜｵﾝｯ！)"
+unko = BeUnko::string(org)
 puts org
-puts "↓"
-puts BeUnko::string(org)
-puts ""
-
-org ="スーパーマケーットに行きましょう。"
-puts org
-puts "↓"
-puts BeUnko::string(org)
-puts ""
-
-org ="コーギー犬"
-puts org
-puts "↓"
-puts BeUnko::string(org)
+puts unko
 puts ""
