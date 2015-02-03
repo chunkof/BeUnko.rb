@@ -5,18 +5,10 @@ module BeUnko
   # Utility
   #-------------------
   def self.max_cyclic(org, max)
-    if org <= max then
-      return org
-    else
-      return 0
-    end
+    return (org <= max) ? org : 0
   end
   def self.max_stop(org, max)
-    if org <= max then
-      return org
-    else
-      return max
-    end
+    return (org <= max) ? org : max
   end
   #-------------------
   # module_function(s)
