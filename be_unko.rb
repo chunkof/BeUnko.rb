@@ -18,6 +18,9 @@ module BeUnko
   # convert string
   #
   def string(org)
+    if false == org.kind_of?(String) then
+      return org
+    end
     serial = 0;
     last_type = '-'
     result = ""
