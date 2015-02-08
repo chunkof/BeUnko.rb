@@ -65,13 +65,19 @@ module BeUnko
         ch = '糞'
         last_type = 'kanji'
       # アルファベット
-      elsif /[a-zA-Z]/ =~ ch then
-        # 小文字
+      elsif /[a-zａ-ｚA-ZＡ-Ｚ]/ =~ ch then
+        # 小文字(半角)
         if /[a-z]/ =~ ch then
           replace = ['u','n','k','o']
-        # 大文字
-        else
+        # 小文字(全角)
+        elsif /[ａ-ｚ]/ =~ ch then
+          replace = ['ｕ','ｎ','ｋ','ｏ']
+        # 大文字(半角)
+        elsif /[A-z]/ =~ ch then
           replace = ['U','N','K','O']
+        # 大文字(全角)
+        else
+          replace = ['Ｕ','Ｎ','Ｋ','Ｏ']
         end
         serial = ('alpha'==last_type) ? max_stop(serial+1,replace.length-1) : 0;
         ch = replace[serial]
@@ -79,6 +85,10 @@ module BeUnko
       # 継続
       elsif /[ー―～・]/ =~ ch then
         # last_type更新しない
+      # 継続(半角スペースに変換)
+      elsif /[ﾟﾞ]/ =~ ch then
+        # last_type更新しない
+        ch = " "
       # その他
       else
         last_type = '-'
